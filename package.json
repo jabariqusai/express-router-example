@@ -1,0 +1,26 @@
+{
+  "name": "express-router-example",
+  "version": "1.0.0",
+  "description": "An example repository for express router - PSEU training",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "nodemon index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jabariqusai/express-router-example.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jabariqusai/express-router-example/issues"
+  },
+  "homepage": "https://github.com/jabariqusai/express-router-example#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
