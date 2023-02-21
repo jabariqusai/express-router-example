@@ -4,7 +4,7 @@ const router = Router();
 /**
  * Retrieve an magazine by id
  */
-router.get('/magazine/:id', (req, res) => {
+router.get('/:id', (req, res) => {
   const id = req.params.id;
   res.send(`Get magazine ${id}`);
 });
@@ -12,21 +12,21 @@ router.get('/magazine/:id', (req, res) => {
 /**
  * Retrieve a list of magazines
  */
-router.get('/magazine', (req, res) => {
+router.get('/', (req, res) => {
   res.send(`List magazines`);
 });
 
 /**
  * Create a new magazine
  */
-router.post('/magazine', (req, res) => {
+router.post('/', (req, res) => {
   res.send('Create magazine');
 });
 
 /**
  * Update an existing magazine
  */
-router.post('/magazine/:id', (req, res) => {
+router.post('/:id', (req, res) => {
   const id = req.params.id;
   res.send(`Update magazine ${id}`);
 });
@@ -34,7 +34,7 @@ router.post('/magazine/:id', (req, res) => {
 /**
  * Delete an magazine by id
  */
-router.post('/magazine/:id', (req, res) => {
+router.post('/:id', (req, res) => {
   const id = req.params.id;
   res.send(`Delete magazine ${id}`);
 });
