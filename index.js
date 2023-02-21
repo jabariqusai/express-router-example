@@ -1,15 +1,12 @@
 import express from 'express';
-import articleRouter from './routes/article.js';
-import userRouter from './routes/user.js';
-import favoriteRouter from './routes/favorite.js';
-import magazineRouter from './routes/magazine.js';
+import { article, favorite, magazine, user} from './routes/index.js'
 
 const PORT = 3001;
 
 const app = express();
-app.use('/article', articleRouter);
-app.use('/favorite', favoriteRouter);
-app.use('/magazine', magazineRouter);
-app.use('/user', userRouter);
+app.use('/article', article);
+app.use('/favorite', favorite);
+app.use('/magazine', magazine);
+app.use('/user', user);
 
 app.listen(PORT, () => console.debug('Server is listening on port', PORT));
