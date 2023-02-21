@@ -7,9 +7,9 @@ const PORT = 3001;
 
 const app = express();
 
-app.use(articleRouter);
-app.use(magazineRouter);
-app.use(userRouter);
-app.use(favoriteRouter);
+app.use('/article', articleRouter);
+app.use('/magazine', magazineRouter);
+app.use('/user' ,userRouter);
+app.use('/favorite', favoriteRouter);
 
 app.listen(PORT, () => console.debug('Server is listening on port', PORT));
