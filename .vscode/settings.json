@@ -4,4 +4,7 @@
     "editor.tabSize": 2,
     "javascript.preferences.quoteStyle": "single",
     "javascript.format.semicolons": "insert",
+    "cSpell.words": [
+      "favourite"
+    ],
   }
