@@ -5,7 +5,7 @@ const router = Router() ;
 /**
  * Retrieve an favorite by id
  */
-router.get('/favorite/:id', (req, res) => {
+router.get('/:id', (req, res) => {
   const id = req.params.id;
   res.send(`Get favorite ${id}`);
 });
@@ -13,21 +13,21 @@ router.get('/favorite/:id', (req, res) => {
 /**
  * Retrieve a list of favorites
  */
-router.get('/favorite', (req, res) => {
+router.get('/', (req, res) => {
   res.send(`List favorites`);
 });
 
 /**
  * Create a new favorite
  */
-router.post('/favorite', (req, res) => {
+router.post('/', (req, res) => {
   res.send('Create favorite');
 });
 
 /**
  * Update an existing favorite
  */
-router.post('/favorite/:id', (req, res) => {
+router.post('/:id', (req, res) => {
   const id = req.params.id;
   res.send(`Update favorite ${id}`);
 });
@@ -35,7 +35,7 @@ router.post('/favorite/:id', (req, res) => {
 /**
  * Delete an favorite by id
  */
-router.post('/favorite/:id', (req, res) => {
+router.post('/:id', (req, res) => {
   const id = req.params.id;
   res.send(`Delete favorite ${id}`);
 });

@@ -5,7 +5,7 @@ const router = Router() ;
 /**
  * Retrieve an article by id
  */
-router.get('/article/:id', (req, res) => {
+router.get('/:id', (req, res) => {
   const id = req.params.id;
   res.send(`Get article ${id}`);
 });
@@ -13,21 +13,21 @@ router.get('/article/:id', (req, res) => {
 /**
  * Retrieve a list of articles
  */
-router.get('/article', (req, res) => {
+router.get('/', (req, res) => {
   res.send(`List articles`);
 });
 
 /**
  * Create a new article
  */
-router.post('/article', (req, res) => {
+router.post('/', (req, res) => {
   res.send('Create article');
 });
 
 /**
  * Update an existing article
  */
-router.post('/article/:id', (req, res) => {
+router.post('/:id', (req, res) => {
   const id = req.params.id;
   res.send(`Update article ${id}`);
 });
@@ -35,7 +35,7 @@ router.post('/article/:id', (req, res) => {
 /**
  * Delete an article by id
  */
-router.post('/article/:id', (req, res) => {
+router.post('/:id', (req, res) => {
   const id = req.params.id;
   res.send(`Delete article ${id}`);
 });
