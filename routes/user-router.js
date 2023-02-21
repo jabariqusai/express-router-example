@@ -7,7 +7,7 @@ const router = Router();
 /**
  * Retrieve an user by id
  */
-app.get('/user/:id', (req, res) => {
+app.get('/:id', (req, res) => {
   const id = req.params.id;
   res.send(`Get user ${id}`);
 });
@@ -15,21 +15,21 @@ app.get('/user/:id', (req, res) => {
 /**
  * Retrieve a list of users
  */
-app.get('/user', (req, res) => {
+app.get('/', (req, res) => {
   res.send(`List users`);
 });
 
 /**
  * Create a new user
  */
-app.post('/user', (req, res) => {
+app.post('/', (req, res) => {
   res.send('Create user');
 });
 
 /**
  * Update an existing user
  */
-app.post('/user/:id', (req, res) => {
+app.post('/:id', (req, res) => {
   const id = req.params.id;
   res.send(`Update user ${id}`);
 });
@@ -37,7 +37,7 @@ app.post('/user/:id', (req, res) => {
 /**
  * Delete an user by id
  */
-app.post('/favorite/:id', (req, res) => {
+app.post('/:id', (req, res) => {
   const id = req.params.id;
   res.send(`Delete favorite ${id}`);
 });
