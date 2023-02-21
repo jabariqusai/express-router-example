@@ -1,8 +1,5 @@
 import express from 'express';
-import articleRoute from './Routers/articles.js'
-import magazineRoute from './Routers/magazine.js'
-import favoriteRouter from './Routers/favorite.js'
-import userRouter from './Routers/user.js'
+import { articleRoute , magazineRoute , favoriteRouter , userRouter } from './Routers/index.js'
 
 const PORT = 3001;
 
