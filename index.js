@@ -11,5 +11,5 @@ app.use('/magazine', magazineRouter);
 app.use('/user', userRouter);
 app.use('/favorite', favoriteRouter);
 
-
+// console.log (app._router.stack) to print system stack 
 app.listen(PORT, () => console.debug('Server is listening on port', PORT));
