@@ -38,7 +38,7 @@ router.post('/', timeLogger, (req, res, next) => {
     const lines = content.split('\n').join('<br>');
     // instance of Error
   } catch (error) {
-    next(error);
+    return next(error);
   }
   // store
   res.send('Create article');
