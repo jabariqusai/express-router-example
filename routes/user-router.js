@@ -1,4 +1,5 @@
 import { Router } from 'express';
+import { timeLogger } from '../middleware/index.js';
 
 const router = Router();
 
@@ -15,9 +16,10 @@ router.get('/:id', (req, res) => {
 /**
  * Retrieve a list of users
  */
-router.get('/', (req, res) => {
+router.get('/', timeLogger, (req, res, next) => {
   res.send(`List users`);
-});
+  next();
+}, timeLogger);
 
 /**
  * Create a new user
@@ -39,7 +41,7 @@ router.put('/:id', (req, res) => {
  */
 router.delete('/:id', (req, res) => {
   const id = req.params.id;
-  res.send(`Delete favorite ${id}`);
+  res.send(`Delete user ${id}`);
 });
 
 
