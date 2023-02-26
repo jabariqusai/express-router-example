@@ -12,4 +12,5 @@ app.use('/favorite', favorite);
 app.use('/magazine', magazine);
 app.use('/user', user);
 
+
 app.listen(PORT, () => console.debug('Server is listening on port', PORT));
