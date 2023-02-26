@@ -1,39 +1,42 @@
 import { Router } from 'express';
+import { TimeLogger } from './../middleware/index.js';
 
 const routes = Router();
 
 
-routes.post('/favorite/:id', (req, res) => {
+routes.post('/:id', (req, res) => {
   const id = req.params.id;
   res.send(`Delete favorite ${id}`);
+  
 });
 
 /**
  * Retrieve an favorite by id
  */
-routes.get('/favorite/:id', (req, res) => {
+routes.get('/:id',TimeLogger, (req, res,next) => {
   const id = req.params.id;
   res.send(`Get favorite ${id}`);
-});
+  next()
+},TimeLogger);
 
 /**
  * Retrieve a list of favorites
  */
-routes.get('/favorite', (req, res) => {
+routes.get('/', (req, res) => {
   res.send(`List favorites`);
 });
 
 /**
  * Create a new favorite
  */
-routes.post('/favorite', (req, res) => {
+routes.post('/', (req, res) => {
   res.send('Create favorite');
 });
 
 /**
  * Update an existing favorite
  */
-routes.post('/favorite/:id', (req, res) => {
+routes.put('/:id', (req, res) => {
   const id = req.params.id;
   res.send(`Update favorite ${id}`);
 });
@@ -41,7 +44,7 @@ routes.post('/favorite/:id', (req, res) => {
 /**
  * Delete an favorite by id
  */
-routes.post('/favorite/:id', (req, res) => {
+routes.delete('/:id', (req, res) => {
   const id = req.params.id;
   res.send(`Delete favorite ${id}`);
 });

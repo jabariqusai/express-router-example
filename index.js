@@ -1,12 +1,14 @@
 import express from 'express';
+import  {Logger} from './middleware/index.js'
 import { article,magazine,user,favorite } from './routes/index.js';
 
 const PORT = 3001;
 
 const app = express();
-app.use(favorite)
-app.use(user)
-app.use(magazine)
+app.use(Logger)
+app.use("/favorite",favorite)
+app.use("/user",user)
+app.use("/magazine",magazine)
 app.use("/article",article)
 
 
