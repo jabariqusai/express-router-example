@@ -1,36 +1,33 @@
 import { Router } from 'express';
 
-const User =()=>{
-
-
-const router= Router();
+const router = Router();
 
 /**
  * Retrieve an user by id
  */
-router.get('/user/:id', (req, res) => {
+router.get('/:id', (req, res) => {
   const id = req.params.id;
   res.send(`Get user ${id}`);
 });
 
 /**
- * Retrieve a list of user
+ * Retrieve a list of users
  */
-router.get('/user', (req, res) => {
-  res.send(`List user`);
+router.get('/', (req, res) => {
+  res.send(`List users`);
 });
 
 /**
  * Create a new user
  */
-router.post('/user', (req, res) => {
+router.post('/', (req, res) => {
   res.send('Create user');
 });
 
 /**
  * Update an existing user
  */
-router.post('/user/:id', (req, res) => {
+router.post('/:id', (req, res) => {
   const id = req.params.id;
   res.send(`Update user ${id}`);
 });
@@ -38,10 +35,9 @@ router.post('/user/:id', (req, res) => {
 /**
  * Delete an user by id
  */
-router.post('/user/:id', (req, res) => {
+router.post('/:id', (req, res) => {
   const id = req.params.id;
   res.send(`Delete user ${id}`);
 });
 
-}
-export default User;
+export default router;
