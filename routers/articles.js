@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import { timeLogger } from '../middleware/index.js';
+import HttpError from '../middleware/time-logger/classes/http-error/http-error.js';
 
 const router = Router();
 
@@ -22,6 +23,19 @@ router.get('/', (req, res) => {
  * Create a new article
  */
 router.post('/', timeLogger, (req, res , next) => {
+  console.log("post invoked");
+  console.log(req.body);
+  const {title , content} = {...req.body} ;
+  try {
+    if (!content) {
+      next(new HttpError ({message : "content is required" , statusCode : 404}))
+    }
+    if (!title) {
+      next(new HttpError ({message : "title is required" , statusCode : 400}))
+    }
+  } catch(error) {
+    next(error) ;
+  }
   res.send('Create article');
   next(); //this endpoint is a middleware so I have to add (next()) in order to move to the next middleware
 }, timeLogger);    // any chain of functions that accepts req , res , next parameters are by default (a middleware chain) 
