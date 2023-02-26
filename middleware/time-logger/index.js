@@ -1,7 +1,8 @@
 const timeLogger = (req, res, next) => {
 
   if (!res.locals.reqStartDate) {
-
+    
+    // first middleware (first step)
     res.locals.reqStartDate = new Date();
     return next();
 
