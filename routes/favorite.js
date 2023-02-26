@@ -21,7 +21,7 @@ router.get('/', (req, res) => {
 /**
  * Create a new favorite
  */
-router.post('/', (req, res) => {
+router.put('/', (req, res) => {
   res.send('Create favorite');
 });
 
@@ -36,7 +36,7 @@ router.post('/:id', (req, res) => {
 /**
  * Delete an favorite by id
  */
-router.post('/:id', (req, res) => {
+router.delete('/:id', (req, res) => {
   const id = req.params.id;
   res.send(`Delete favorite ${id}`);
 });

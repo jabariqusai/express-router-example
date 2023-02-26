@@ -28,7 +28,7 @@ router.post('/', (req, res) => {
 /**
  * Update an existing article
  */
-router.post('/:id', (req, res) => {
+router.put('/:id', (req, res) => {
   const id = req.params.id;
   res.send(`Update article ${id}`);
 });
@@ -36,7 +36,7 @@ router.post('/:id', (req, res) => {
 /**
  * Delete an article by id
  */
-router.post('/:id', (req, res) => {
+router.delete('/:id', (req, res) => {
   const id = req.params.id;
   res.send(`Delete article ${id}`);
 });
