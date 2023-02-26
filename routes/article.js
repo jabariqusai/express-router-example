@@ -5,7 +5,7 @@ const router = Router();
 /**
  * Retrieve an article by id
  */
-router.get('/article/:id',TimeLogger, (req, res, next) => {
+router.get('/:id',TimeLogger, (req, res, next) => {
   const id = req.params.id;
   res.send(`Get article ${id}`);
   next();
