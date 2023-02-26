@@ -1,5 +1,6 @@
 import { Router } from 'express';
-import { TimeLogger } from '../middlewares/index.js'
+import httpError from '../classes/handle-error/http-error.js';
+import { TimeLogger } from '../middlewares/index.js';
 const router = Router();
 
 /**
@@ -7,7 +8,7 @@ const router = Router();
  */
 router.get('/:id',TimeLogger, (req, res, next) => {
   const id = req.params.id;
-  res.send(`Get article ${id}`);
+  res.status(200).send(`Get article ${id}`);
   next();
 },TimeLogger);
 
@@ -32,8 +33,20 @@ router.post('/',TimeLogger, (req, res, next) => {
  */
 router.post('/:id', TimeLogger, (req, res, next) => {
   const id = req.params.id;
+  try {
+    const {title, content} = req.body;
+    if(!title){
+      return next (new httpError('Title missing', 400 ));
+    }
+    
+    if(!content){
+      return next (new httpError('Content missing', 400 ));
+    }
+  } catch (error) {
+    next(error)
+  }
   res.send(`Update article ${id}`);
-  next()
+  next();
 },TimeLogger);
 
 /**

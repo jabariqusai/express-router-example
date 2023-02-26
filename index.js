@@ -8,7 +8,7 @@ import { Logger } from './middlewares/index.js'
 const PORT = 3001;
 
 const app = express();
-
+app.use(express.json());
 
 app.use(Logger);
 app.use('/article',articleRouter);
