@@ -1,5 +1,5 @@
-const Logger = (req, res, next) => {
+const logger = (req, res, next) => {
   console.info(`${req.method} ${req.url}`);
   next();
 };
-export default Logger;
+export default logger;
