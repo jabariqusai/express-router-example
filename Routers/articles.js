@@ -1,4 +1,5 @@
 import { Router } from 'express';
+import timeLogger from '../middleware/time-logger/index.js';
 
 const router = Router();
 
@@ -20,9 +21,10 @@ router.get('/', (req, res) => {
 /**
  * Create a new article
  */
-router.post('/', (req, res) => {
+router.post('/',timeLogger, (req, res , next) => {
   res.send('Create article');
-});
+  next();
+},timeLogger);
 
 /**
  * Update an existing article
