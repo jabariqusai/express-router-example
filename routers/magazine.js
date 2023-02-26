@@ -1,0 +1,37 @@
+import {Router} from 'express';
+
+const router = Router();
+
+
+/**
+ * Retrieve an magazine by id
+ */
+router.get('/:id', (req, res) => {
+    const id = req.params.id;
+    res.send(`Get magazine ${id}`);
+  });
+  
+  /**
+   * Retrieve a list of magazines
+   */
+  router.get('/', (req, res) => {
+    res.send(`List magazines`);
+  });
+  
+  /**
+   * Create a new magazine
+   */
+  router.post('/', (req, res) => {
+    res.send('Create magazine');
+  });
+  
+  /**
+   * Update an existing magazine
+   */
+  router.post('/:id', (req, res) => {
+    const id = req.params.id;
+    res.send(`Update magazine ${id}`);
+  });
+
+  export default router;
+  
