@@ -1,6 +1,7 @@
 import { Router } from 'express';
+import { timeLogger } from '../middleware/index.js';
 
-const router = Router() ;
+const router = Router();
 
 /**
  * Retrieve an article by id
@@ -20,9 +21,10 @@ router.get('/', (req, res) => {
 /**
  * Create a new article
  */
-router.post('/', (req, res) => {
+router.post('/', timeLogger, (req, res , next) => {
   res.send('Create article');
-});
+  next(); //this endpoint is a middleware so I have to add (next()) in order to move to the next middleware
+}, timeLogger);    // any chain of functions that accepts req , res , next parameters are by default (a middleware chain) 
 
 /**
  * Update an existing article
@@ -40,4 +42,4 @@ router.post('/:id', (req, res) => {
   res.send(`Delete article ${id}`);
 });
 
-export default router ;
+export default router;
