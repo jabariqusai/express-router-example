@@ -1,7 +1,8 @@
 import { Router } from 'express';
+import HttpError from '../class/httpError.js';
+import { timeLogger } from '../middleware/index.js';
 
 const router = Router();
-
 
 
 /**
@@ -15,15 +16,21 @@ router.get('/:id', (req, res) => {
 /**
  * Retrieve a list of articles
  */
-router.get('', (req, res) => {
+router.get('/', timeLogger, (req, res, next) => {
   res.send(`List articles`);
-});
+  next();
+}, timeLogger);
 
 /**
  * Create a new article
  */
-router.post('', (req, res) => {
-  res.send('Create article');
+router.post('/', (req, res) => {
+  const { title, content } = req.body;
+  if (!title) {
+    new HttpError('title is required');
+  }
+  res.end();
+  // res.send('Create article');
 });
 
 /**
