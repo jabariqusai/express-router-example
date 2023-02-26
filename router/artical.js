@@ -1,5 +1,5 @@
 import { Router } from "express";
-
+import { Timelogger } from "../middleware/index.js";
 const route = Router();
 
 /**
@@ -20,9 +20,15 @@ route.get('/', (req, res) => {
 /**
  * Create a new article
  */
-route.post('/', (req, res) => {
+//بضل احط نيكست من واحد لواحد واخر شي بدون نيكست 
+route.post('/', Timelogger,(req, res,next) => {
     res.send('Create article');
-});
+    next()
+},
+//هون لما يدخلها الtimetogle بروح خارج ال if وفش فيها نيكس 
+Timelogger);
+
+
 
 /**
  * Update an existing article
