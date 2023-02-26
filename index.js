@@ -3,10 +3,14 @@ import articleRouter from './routes/article.js'
 import magazineRouter from './routes/magazine.js'
 import userRouter from './routes/user.js'
 import favoriteRouter from './routes/favorite.js'
+import { Logger } from './middlewares/index.js'
+
 const PORT = 3001;
 
 const app = express();
 
+
+app.use(Logger);
 app.use('/article', articleRouter);
 app.use('/magazine', magazineRouter);
 app.use('/user' ,userRouter);

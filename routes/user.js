@@ -14,7 +14,7 @@ router.get('/:id', (req, res) => {
  * Retrieve a list of articles
  */
 router.get('/', (req, res) => {
-  res.send(`List articles`);
+  res.send(`List users`);
 });
 
 /**
