@@ -1,21 +1,32 @@
 import { Router } from 'express';
+import HTTPError from '../classes/httpError.js';
+import { timeLogger } from '../middleware/index.js';
 
 const router = Router();
 
 /**
  * Retrieve an article by id
  */
-router.get('/:id', (req, res) => {
+router.get('/:id', (req, res, next) => {
   const id = req.params.id;
+  next(new HTTPError('i want to use the error', 500));
+  try {
+    const body = req.body;
+
+  } catch (err) {
+    // here we don't throws the object of http error because they are extends Error class
+    next(err);
+  }
   res.send(`Get article ${id}`);
 });
 
 /**
  * Retrieve a list of articles
  */
-router.get('', (req, res) => {
+router.get('', timeLogger, (req, res, next) => {
+
   res.send(`List articles`);
-});
+}, timeLogger);
 
 /**
  * Create a new article
