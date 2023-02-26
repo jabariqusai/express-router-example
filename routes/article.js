@@ -5,6 +5,7 @@ const router = Router();
  * Retrieve an article by id
  */
 router.get('/:id', (req, res) => {
+  console.log('getting article')
   const id = req.params.id;
   res.send(`Get article ${id}`);
 });
