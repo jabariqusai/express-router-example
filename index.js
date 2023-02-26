@@ -1,10 +1,12 @@
 import express from 'express';
 import { articleRoute , magazineRoute , favoriteRouter , userRouter } from './Routers/index.js'
+import {logger} from './middleware/index.js'
 
 const PORT = 3001;
 
 const app = express();
 
+app.use(logger);
 app.use('/article' , articleRoute)
 app.use('/magazine' , magazineRoute)
 app.use('/favorite' , favoriteRouter)
