@@ -1,4 +1,6 @@
 import { Router } from 'express';
+import HttpError from '../classes/http-error.js';
+import { logger, timeLogger } from './../middleware/index.js';
 
 const router = Router();
 
@@ -20,9 +22,28 @@ router.get('/', (req, res) => {
 /**
  * Create a new article
  */
-router.post('/', (req, res) => {
+router.post('/', timeLogger, (req, res, next) => {
+  // title, content
+  try {
+    const { title, content } = req.body;
+    if (!title) {
+      // status code 400 Bad Request
+      return next(new HttpError('title is required', 400));
+    }
+
+    if (!content) {
+      // status code 400 Bad Request
+      return next(new HttpError('content is required', 400));
+    }
+    const lines = content.split('\n').join('<br>');
+    // instance of Error
+  } catch (error) {
+    next(error);
+  }
+  // store
   res.send('Create article');
-});
+  next();
+}, timeLogger);
 
 /**
  * Update an existing article
