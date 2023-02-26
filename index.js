@@ -1,9 +1,11 @@
 import express from 'express';
-import { article, favorite, magazine, user} from './routes/index.js'
-
+import { article, favorite, magazine, user } from './routes/index.js';
+import { logger } from './middleware/index.js';
 const PORT = 3001;
 
 const app = express();
+
+app.use(logger);
 app.use('/article', article);
 app.use('/favorite', favorite);
 app.use('/magazine', magazine);
