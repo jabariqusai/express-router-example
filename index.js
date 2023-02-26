@@ -11,7 +11,7 @@ const app = express();
 
 
 app.use(Logger);
-app.use('/article', articleRouter);
+app.use('/article',articleRouter);
 app.use('/magazine', magazineRouter);
 app.use('/user' ,userRouter);
 app.use('/favorite', favoriteRouter);
