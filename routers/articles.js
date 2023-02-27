@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import { timeLogger } from '../middleware/index.js';
-import HttpError from '../middleware/time-logger/classes/http-error/http-error.js';
+import HttpError from '../classes/http-error/http-error.js';
 
 const router = Router();
 
