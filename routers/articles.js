@@ -33,11 +33,14 @@ router.post('/', timeLogger, (req, res , next) => {
     if (!title) {
       next(new HttpError ({message : "title is required" , statusCode : 400}))
     }
+    else {
+      console.log('valid object format');
+    }
   } catch(error) {
     next(error) ;
   }
   res.send('Create article');
-  next(); //this endpoint is a middleware so I have to add (next()) in order to move to the next middleware
+  next(error); //this endpoint is a middleware so I have to add (next()) in order to move to the next middleware
 }, timeLogger);    // any chain of functions that accepts req , res , next parameters are by default (a middleware chain) 
 
 /**

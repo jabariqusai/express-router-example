@@ -2,7 +2,7 @@ const timeLogger = (error , eq , res , next) => {
   if (!res.locals.reqDate) {
     console.log('sending request');
     res.locals.reqDate = new Date()
-    return next()
+    next(error)
   }
   console.log('sending response');
   res.locals.resDate = new Date() 
