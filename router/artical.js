@@ -1,5 +1,6 @@
 import { Router } from "express";
-import { Timelogger } from "../middleware/index.js";
+import HttpError from "./classes/http.error.js";
+import { Timelogger,logger } from "../middleware/index.js";
 const route = Router();
 
 /**
@@ -22,6 +23,24 @@ route.get('/', (req, res) => {
  */
 //بضل احط نيكست من واحد لواحد واخر شي بدون نيكست 
 route.post('/', Timelogger,(req, res,next) => {
+    try{
+        const {title,content} = req.body;
+        if(!title){
+            return next( new HttpError ('title is required',400))
+            
+        }
+        if(!content){
+            
+            return next( new HttpError ('content is required',400))
+        }
+        const line =  content.split('\n').join('<br>');
+
+    }
+    catch(err){
+    next(err);
+    }
+
+
     res.send('Create article');
     next()
 },
@@ -33,7 +52,7 @@ Timelogger);
 /**
  * Update an existing article
  */
-route.post('/:id', (req, res) => {
+route.put('/:id', (req, res) => {
     const id = req.params.id;
     res.send(`Update article ${id}`);
 });
@@ -41,7 +60,7 @@ route.post('/:id', (req, res) => {
 /**
  * Delete an article by id
  */
-route.post('/:id', (req, res) => {
+route.delete('/:id', (req, res) => {
     const id = req.params.id;
     res.send(`Delete article ${id}`);
 });
