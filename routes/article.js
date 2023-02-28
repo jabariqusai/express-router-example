@@ -4,7 +4,6 @@ import { timeLogger } from '../middleware/index.js';
 
 const router = Router();
 
-
 /**
  * Retrieve an article by id
  */

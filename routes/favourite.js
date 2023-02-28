@@ -22,6 +22,7 @@ router.get('/:id', (req, res) => {
  * Retrieve a list of favorites
  */
 router.get('/', (req, res) => {
+  
   res.send(`List favorites`);
 });
 
@@ -32,20 +33,5 @@ router.post('/', (req, res) => {
   res.send('Create favorite');
 });
 
-/**
- * Update an existing favorite
- */
-router.put('/:id', (req, res) => {
-  const id = req.params.id;
-  res.send(`Update favorite ${id}`);
-});
-
-/**
- * Delete an favorite by id
- */
-router.delete('/:id', (req, res) => {
-  const id = req.params.id;
-  res.send(`Delete favorite ${id}`);
-});
 
 export default router;

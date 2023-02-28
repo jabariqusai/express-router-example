@@ -6,10 +6,10 @@ const app = express();
 app.use(express.json());
 
 app.use(logger);
+app.use('/user', user);
 app.use('/article', article);
 app.use('/favorite', favorite);
 app.use('/magazine', magazine);
-app.use('/user', user);
 
 
 const PORT = 3003;
