@@ -29,12 +29,14 @@ const router = Router();
 router.post('/login', (req, res) => {
   const username = req.body.username;
   const password = req.body.password;
+  req.headers.authorization
 
   const user = users.find(user => user.username === username);
   if (!user || passwords[username] !== password) {
     res.status(400).send('invalid credentials');
   }
   const token = jwt.sign(user, 'abd');
+  console.log(jwt.verify(token, 'abd'));
   res.send(token);
 });
 
