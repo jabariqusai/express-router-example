@@ -1,43 +1,45 @@
 import { Router } from 'express';
+import jwt from 'jsonwebtoken';
 
 const router = Router();
 
-/**
- * Retrieve an user by id
- */
-router.get('/:id', (req, res) => {
-  const id = req.params.id;
-  res.send(`Get user ${id}`);
-});
+const passwords = {
+  qjabari: '1234',
+  mnajar: '4321'
+};
+
+const users = [
+  {
+    username: 'qjabari',
+    firstName: 'Qusai',
+    lastName: 'Jabari',
+    email: 'qjabari@sadasol.com'
+  },
+  {
+    username: 'mnajar',
+    firstName: 'Moayed',
+    lastName: 'Najar',
+    email: 'mnajar@sadasol.com'
+  }
+];
 
 /**
- * Retrieve a list of users
+ * Login endpoint. Returns a JSON web token.
  */
-router.get('/', (req, res) => {
-  res.send(`List users`);
-});
+router.post('/login', (req, res) => {
+  const username = req.body.username;
+  const password = req.body.password;
 
-/**
- * Create a new user
- */
-router.post('/', (req, res) => {
-  res.send('Create user');
-});
+  const user = users.find(item => item.username === username);
 
-/**
- * Update an existing user
- */
-router.post('/:id', (req, res) => {
-  const id = req.params.id;
-  res.send(`Update user ${id}`);
-});
+  if (!user || passwords[username] !== password) {
+    res.status(400).send('Incorrect username/password');
+    return;
+  }
 
-/**
- * Delete an user by id
- */
-router.post('/:id', (req, res) => {
-  const id = req.params.id;
-  res.send(`Delete user ${id}`);
+  const token = jwt.sign(user, 'potato', { expiresIn: 60 * 5});
+
+  res.send(token);
 });
 
 export default router;
