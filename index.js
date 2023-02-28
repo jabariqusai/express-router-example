@@ -2,6 +2,7 @@ import express from 'express';
 import { article, favorite, magazine, user } from './routers/index.js';
 
 import { logger, errorHandler } from './middleware/index.js';
+
 const PORT = 3001;
 
 const app = express();
