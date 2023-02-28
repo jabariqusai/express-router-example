@@ -1,6 +1,4 @@
 import { Router } from 'express';
-import { HttpErrorHandler } from '../middleware/index.js';
-import HttpError from '../classes/http-error.js';
 const router = Router();
 
 /**
@@ -23,20 +21,8 @@ router.get('/', (req, res) => {
  * Create a new article
  */
 router.post('/', (req, res) => {
-  try {
-    const { title, content } = req.body;
-    if (!title) {
-      return next(new HttpError(400, 'title is required'));
-    }
-    if (!content) {
-      return next(new HttpError(400, 'content is required'));
-    }
-  } catch {
-    return next(new HttpError());
-  }
-
-  res.send('Create article');
-}, HttpErrorHandler);
+  res.send('Posting article');
+});
 
 /**
  * Update an existing article
