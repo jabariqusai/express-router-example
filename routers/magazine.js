@@ -6,38 +6,38 @@ const router = Router();
  * Retrieve an magazine by id
  */
 router.get('/:id', (req, res) => {
-  const id = req.params.id;
-  res.send(`Get magazine ${id}`);
+    const id = req.params.id;
+    res.send(`Get magazine ${id}`);
 });
 
 /**
  * Retrieve a list of magazines
  */
 router.get('', (req, res) => {
-  res.send(`List magazines`);
+    res.send(`List magazines`);
 });
 
 /**
  * Create a new magazine
  */
 router.post('/', (req, res) => {
-  res.send('Create magazine');
+    res.send('Create magazine');
 });
 
 /**
  * Update an existing magazine
  */
 router.post('/:id', (req, res) => {
-  const id = req.params.id;
-  res.send(`Update magazine ${id}`);
+    const id = req.params.id;
+    res.send(`Update magazine ${id}`);
 });
 
 /**
  * Delete an magazine by id
  */
 router.post('/:id', (req, res) => {
-  const id = req.params.id;
-  res.send(`Delete magazine ${id}`);
+    const id = req.params.id;
+    res.send(`Delete magazine ${id}`);
 });
 
 export default router;
