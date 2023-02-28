@@ -1,42 +1,42 @@
 import { Router } from 'express';
+import jwt from 'jsonwebtoken';
 const router = Router();
 
-/**
- * Retrieve an user by id
- */
-router.get('/:id', (req, res) => {
-  const id = req.params.id;
-  res.send(`Get user ${id}`);
-});
+const passwords = {
+  qjabari: '1234',
+  mnajar: '4321'
+};
+
+const users = [
+  {
+    userName: 'qjabari',
+    firstName: 'Qusai',
+    lastName: 'Jabari',
+    email: 'qjabari@sadasol.com'
+  },
+  {
+    userName: 'mnajar',
+    firstName: 'Moayed',
+    lastName: 'Najar',
+    email: 'mnajar@sadasol.com'
+  }
+];
 
 /**
- * Retrieve a list of users
+ * Login
  */
-router.get('/', (req, res) => {
-  res.send(`List users`);
-});
+router.post('/login', (req, res) => {
+  const userName = req.body.userName;
+  const password = req.body.password;
+  const user = users.find((user) => user.userName === userName && passwords[userName] === password);
+  if (!user) {
+    res.status(400).send(`invalid userName/password combination`);
+    return;
+  }
 
-/**
- * Create a new user
- */
-router.post('/', (req, res) => {
-  res.send('Create user');
-});
-
-/**
- * Update an existing user
- */
-router.post('/:id', (req, res) => {
-  const id = req.params.id;
-  res.send(`Update user ${id}`);
-});
-
-/**
- * Delete an user by id
- */
-router.post('/:id', (req, res) => {
-  const id = req.params.id;
-  res.send(`Delete user ${id}`);
+  const token = jwt.sign(user, 'potato', { expiresIn: 60 * 10 });
+  
+  res.send(token);
 });
 
 export default router;
