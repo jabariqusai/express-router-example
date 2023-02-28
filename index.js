@@ -13,7 +13,7 @@ app.use('/article',articalRouter);
 app.use('/magazine',magazineRouter);
 app.use('/user',userRouter);
 app.use('/favorite',favoriteRouter);
-app.use(errorHandling);
+// app.use(errorHandling);
 
 //console.log(app._router.stack)
 //بشوف كل التسلسل
