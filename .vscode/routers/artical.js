@@ -1,3 +1,5 @@
+import { Router } from 'express';
+import { timeLogger } from '../middlewares'; 
 
 const articalRouter = ()=>{
 /**
@@ -19,6 +21,7 @@ app.get('/article', (req, res) => {
  * Create a new article
  */
 app.post('/article', (req, res) => {
+  console.info(`${req.method} ${req.url}`)
   res.send('Create article');
 });
 

@@ -5,6 +5,8 @@ const reqFinalDate = new Date();
 console.info(`Elapsed time: ${reqFinalDate - reqFirstDate}ms`);
 return next();
  }
+
+ 
  res.locals.reqStartTime = new Date()
  next();
  console.log('Test')
@@ -12,3 +14,5 @@ return next();
 };
 
 export default timeLogger
+
+
