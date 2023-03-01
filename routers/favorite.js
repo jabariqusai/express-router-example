@@ -23,10 +23,8 @@ const users = [
     }
 ];
 
-
-
 /**
- * Retrieve an favorite by id
+ * Retrieve an favorite
  */
 router.get('/login', (req, res) => {
     const username = req.body.username;

@@ -1,5 +1,4 @@
 import { Router } from 'express';
-import HTTPError from '../classes/httpError.js';
 import { timeLogger } from '../middleware/index.js';
 
 const router = Router();
