@@ -1,6 +1,11 @@
 import { Router } from 'express';
 const router = Router();
 
+const favorites = {
+  'qjabari': ['icecream', 'other'],
+  'mnajar': ['vegetables']
+};
+
 /**
  * Retrieve an favorite by id
  */
@@ -13,7 +18,7 @@ router.get('/:id', (req, res) => {
  * Retrieve a list of favorites
  */
 router.get('/', (req, res) => {
-  res.send(`List favorites`);
+  res.send(favorites[req.user.userName]);
 });
 
 /**
