@@ -5,7 +5,7 @@ import userRouter from './routes/user.js';
 import favoriteRouter from './routes/favorite.js';
 import endpointLogger from './middleware/logger/index.js';
 import timeLogger from './middleware/time-logger/index.js';
-
+import guard from './middleware/guard/guard.js'
 
 const PORT = 3001;
 
@@ -18,7 +18,7 @@ app.use(endpointLogger);
 app.use('/article', articleRouter);
 app.use('/magazine', magazineRouter);
 app.use('/user', userRouter);
-app.use('/favorite', favoriteRouter);
+app.use('/favorite',guard, favoriteRouter);
 
 // app.use(timeLogger);
 
