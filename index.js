@@ -6,7 +6,7 @@ const app = express();
 app.use(express.json());
 app.use(logger);
 
-app.use('/admin', auth('admin'), admin);
+app.use('/admin', auth(['admin']), admin);
 app.use('/user', user);
 app.use('/article', article);
 app.use('/favorite', auth(), favorite);
