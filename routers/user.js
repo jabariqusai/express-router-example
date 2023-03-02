@@ -33,8 +33,8 @@ router.post('/login', (req, res) => {
   if (!user || passwords[username] !== password) {
     res.status(400).send('invalid username/password');
   }
-  const token = jwt.sign(user, 'potato');
-  res.send(token);
+  const token = jwt.sign(user, 'potato',{expiresIn:60*5});
+  res.send({token:token});
 });
 
 export default router;

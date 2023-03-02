@@ -1,5 +1,9 @@
 import {Router} from 'express';
 
+const favorite ={
+  qjabari : ['tea']
+}
+
 const router = Router();
 /**
  * Delete an user by id
@@ -21,7 +25,7 @@ router.get('/:id', (req, res) => {
  * Retrieve a list of favorites
  */
 router.get('/', (req, res) => {
-  res.send(`List favorites`);
+  res.send(favorite[req.user.username]);
 });
 
 /**
