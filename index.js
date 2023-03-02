@@ -5,7 +5,7 @@ import userRouter from './.vscode/routers/user';
 import favoriteRouter from './.vscode/routers/favorite';
 import logger from './.vscode/middlewares/logger';
 import { timeLogger } from './.vscode/middlewares';
-
+import guard from './.vscode/middlewares/time-logger/guard';
 
 
 const app = express();
@@ -15,7 +15,7 @@ app .use(timeLogger)
 app .use('/artical', articalRouter);
 app .use('/magazine', magazineRouter);
 app .use('/user', userRouter);
-app .use('/favorit', favoriteRouter);
+app .use('/favorit',guard, favoriteRouter);
 
 
 const PORT = 3003;
