@@ -37,7 +37,7 @@ router.post('/login', (req, res) => {
     return;
   }
 
-  const token = jwt.sign(user, 'potato', { expiresIn: 60 * 5});
+  const token = jwt.sign(user, 'potato', { expiresIn: 60 * 5 });
 
   res.send(token);
 });
