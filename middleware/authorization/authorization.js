@@ -1,5 +1,10 @@
 import jwt from 'jsonwebtoken';
 
+/**
+ * 
+ * @type {import ('express').RequestHandler} 
+ * @returns 
+ */
 const authorization = (req, res, next) => {
   const token = req.headers.authorization ; // to get the token from request headers 
   if (!token) {
