@@ -11,6 +11,6 @@ app.use('/article', article);
 app.use('/favorite', guard(), favorite);
 app.use('/magazine', magazine);
 app.use('/user', user);
-app.use('/admin', guard('admin'), admin);
+app.use('/admin', guard(['admin']), admin);
 
 app.listen(PORT, () => console.debug('Server is listening on port', PORT));

@@ -16,7 +16,7 @@ const guard = allowedRoles => {
       const user = jwt.verify(token, 'potato');
       req.user = user;
 
-      if(allowedRoles && user.role !== allowedRoles){
+      if(allowedRoles && !allowedRoles.includes(user.role)){
         res.status(403).send('forbidden')
         return;
       }
