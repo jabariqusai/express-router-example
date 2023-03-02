@@ -1,5 +1,4 @@
 import { Router } from 'express';
-import { timeLogger } from '../middleware/index.js';
 import jwt from 'jsonwebtoken';
 const router = Router();
 
@@ -13,13 +12,15 @@ const users = [
     username: 'qjabari',
     firstName: 'Qusai',
     lastName: 'Jabari',
-    email: 'qjabari@sadasol.com'
+    email: 'qjabari@sadasol.com',
+    role : 'admin'
   },
   {
     username: 'mnajar',
     firstName: 'Moayed',
     lastName: 'Najar',
-    email: 'mnajar@sadasol.com'
+    email: 'mnajar@sadasol.com',
+    role : 'user'
   }
 ];
 

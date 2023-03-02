@@ -3,7 +3,7 @@ import { Router } from 'express';
 const router = Router();
 const favorites = {
 
-  qjabari : ['cats'],
+  qjabari : ['ice'],
   mnajar : ['hacking']
 
 }
