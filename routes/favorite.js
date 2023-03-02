@@ -2,7 +2,7 @@ import { Router } from 'express';
 
 const router = Router();
 const favorites = {
-  qjabari: 'tomato',
+  qjabari: 'han',
   mnajar: 'nah'
 };
 

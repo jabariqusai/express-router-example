@@ -12,13 +12,15 @@ const users = [
     username: 'qjabari',
     firstName: 'Qusai',
     lastName: 'Jabari',
-    email: 'qjabari@sadasol.com'
+    email: 'qjabari@sadasol.com',
+    role: 'admin'
   },
   {
     username: 'mnajar',
     firstName: 'Moayed',
     lastName: 'Najar',
-    email: 'mnajar@sadasol.com'
+    email: 'mnajar@sadasol.com',
+    role: 'user'
   }
 ];
 
@@ -32,7 +34,7 @@ router.post('/login', (req, res) => {
   if(!user || passwords[username] != password){
     res.status(400).send('username or password incorrect');
   }else{
-    const token = jwt.sign(user, 'why', {subject:'why'});
+    const token = jwt.sign(user, 'why', {subject:'why though'});
     res.send(token);
   }
 });
