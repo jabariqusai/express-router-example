@@ -1,17 +1,34 @@
 import jwt from 'jsonwebtoken';
 
-const auth = (req, res, next) => {
+/**
+ * @type {import('express').RequestHandler}
+ * @param {Array} roles
+ */
+const auth = roles => (req, res, next) => {
+  const token = req.headers.authorization;
 
-  try {
-    const payload = jwt.verify(req.headers.authorization, 'abd');
-    const user = payload;
-    console.log(user);
-    res.status(200).send('done').end();
-
-  } catch (err) {
-    console.error(err);
-    res.status(400).send('forbidden');
+  if (!token) {
+    res.status(401).send('unauthenticated');
   }
+  else {
+    try {
+      const payload = jwt.verify(token, 'abd');
+      req.user = payload;
+      if (roles) {
+        if (roles.includes(payload.role)) {
+          next();
+        } else {
+          res.status(403).send('forbidden');
+          return;
+        }
+      }
+
+    } catch (err) {
+      console.error(err);
+      res.status(403).send('forbidden');
+    }
+  }
+  next();
 };
 
 export default auth;

@@ -1,15 +1,15 @@
 import express from 'express';
-import { article, favorite, magazine, user } from './routes/index.js';
+import { article, favorite, magazine, user, admin } from './routes/index.js';
 import { logger, auth } from './middleware/index.js';
 
 const app = express();
 app.use(express.json());
-
 app.use(logger);
+// app.use(auth);
+app.use('/admin', auth(['admin']), admin);
 app.use('/user', user);
 app.use('/article', article);
-app.use(auth);
-app.use('/favorite', favorite);
+app.use('/favorite', auth(), favorite);
 app.use('/magazine', magazine);
 
 

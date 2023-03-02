@@ -2,6 +2,10 @@ import { Router } from 'express';
 
 const router = Router();
 
+const favorites = {
+  'abd': ['ice coffee', 'drugs'],
+};
+
 /**
  * Delete an user by id
  */
@@ -22,7 +26,9 @@ router.get('/:id', (req, res) => {
  * Retrieve a list of favorites
  */
 router.get('/', (req, res) => {
-  res.send(`List favorites`);
+  console.log('user', req.user);
+  const user = req.user;
+  res.send(favorites[user.username]).end();
 });
 
 /**
