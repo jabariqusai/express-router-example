@@ -3,7 +3,7 @@ import articleRouter from './routes/article.js'
 import magazineRouter from './routes/magazine.js'
 import userRouter from './routes/user.js'
 import favoriteRouter from './routes/favorite.js'
-import { Logger } from './middlewares/index.js'
+import { Logger, guard } from './middlewares/index.js'
 
 const PORT = 3001;
 
@@ -14,6 +14,6 @@ app.use(Logger);
 app.use('/article',articleRouter);
 app.use('/magazine', magazineRouter);
 app.use('/user' ,userRouter);
-app.use('/favorite', favoriteRouter);
+app.use('/favorite',guard, favoriteRouter);
 
 app.listen(PORT, () => console.debug('Server is listening on port', PORT));
