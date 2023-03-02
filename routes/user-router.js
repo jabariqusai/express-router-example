@@ -32,7 +32,6 @@ router.post('/login', (req, res) => {
   const password = req.body.password;
 
   const user = users.find(item => item.username === username);
-  console.log(user);
 
   if (!user || passwords[username] !== password) {
     res.status(400).send('username/password not correct!');
@@ -41,9 +40,9 @@ router.post('/login', (req, res) => {
 
   //create the token 
   const token = jwt.sign(user, 'tomato', { expiresIn: 60 * 5 });
-  res.send(token);
   console.log(token);
-  res.send('Create user').end();
+  res.send(token).end();
+  
 });
 
 
