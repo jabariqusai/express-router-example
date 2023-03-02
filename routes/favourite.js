@@ -22,7 +22,6 @@ router.get('/:id', (req, res) => {
  * Retrieve a list of favorites
  */
 router.get('/', (req, res) => {
-
   res.send(`List favorites`);
 });
 
