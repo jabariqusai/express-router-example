@@ -2,9 +2,9 @@ import jwt from 'jsonwebtoken';
 
 /**
  * @type {import('express').RequestHandler}
- * @param {Array} roles
+ * @param {string} allowedRole
  */
-const auth = roles => (req, res, next) => {
+const auth = allowedRole => (req, res, next) => {
   const token = req.headers.authorization;
 
   if (!token) {
@@ -14,15 +14,11 @@ const auth = roles => (req, res, next) => {
     try {
       const payload = jwt.verify(token, 'abd');
       req.user = payload;
-      if (roles) {
-        if (roles.includes(payload.role)) {
-          next();
-        } else {
-          res.status(403).send('forbidden');
-          return;
-        }
+      console.log(allowedRole);
+      if (allowedRole && allowedRole !== payload.role) {
+        res.status(403).send();
+        return;
       }
-
     } catch (err) {
       console.error(err);
       res.status(403).send('forbidden');
