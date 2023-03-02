@@ -1,4 +1,5 @@
 import express from 'express';
+import guard from './middleware/guard.js';
 import { logger} from './middleware/index.js';
 
 import { articalRouter,favoriteRouter,magazineRouter,userRouter } 
@@ -12,7 +13,7 @@ app.use(logger);
 app.use('/article',articalRouter);
 app.use('/magazine',magazineRouter);
 app.use('/user',userRouter);
-app.use('/favorite',favoriteRouter);
+app.use('/favorite',guard,favoriteRouter);
 
 
 //console.log(app._router.stack)

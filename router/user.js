@@ -37,7 +37,7 @@ route.post('/login', (req, res) => {
       res.status(400).send('Incorrect username/password')
       return;
     }
-    const token  = jwt.sign(user,'potato')
+    const token  = jwt.sign(user,'potato',{expiresIn:60*5})//time for seccion
   
     res.send(token)
   
