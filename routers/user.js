@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import jwt from 'jsonwebtoken';
+import secretKey from '../secrets/secrets.js';
 
 const router = Router();
 
@@ -13,13 +14,15 @@ const users = [
         username: 'qjabari',
         firstName: 'Qusai',
         lastName: 'Jabari',
-        email: 'qjabari@sadasol.com'
+        email: 'qjabari@sadasol.com',
+        roles: ['admin', 'user']
     },
     {
         username: 'mnajar',
         firstName: 'Moayed',
         lastName: 'Najar',
-        email: 'mnajar@sadasol.com'
+        email: 'mnajar@sadasol.com',
+        roles: ['user']
     }
 ];
 
@@ -34,7 +37,7 @@ router.post('/login', (req, res) => {
         res.status(400).send('Invalid username/password').end();
         return;
     }
-    const token = jwt.sign(user, 'hello@sadaTraining', { expiresIn: 60 * 60 * 24 * 30 });
+    const token = jwt.sign(user, secretKey, { expiresIn: 60 * 60 * 24 * 30 });
     res.send(`the token is ${token}`).end();
 });
 

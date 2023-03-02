@@ -5,7 +5,8 @@ const router = Router();
 const favorite = {
     'momen': ['rice', 'chicken', 'meat'],
     'abd': ['rice'],
-    'qjabari': ['ice-cream']
+    'qjabari': ['ice-cream'],
+    'mnajar': ['ice-cream']
 };
 
 /**
