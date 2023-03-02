@@ -1,9 +1,8 @@
 import jwt from 'jsonwebtoken';
 
-/**
- * @type {import ('express').RequestHandler}
- */
-const guard = (req, res, next) => {
+const guard = allowedRole => {
+
+ return (req, res, next) => {
   const token = req.headers.authorization;
 
   if (!token) {
@@ -13,7 +12,11 @@ const guard = (req, res, next) => {
   
     try {
       const payload = jwt.verify(token, "potato");
-      console.log(payload);
+  
+      if(allowedRole && payload.role !== allowedRole) {
+        res.status(403).send('forbidden');
+        return
+      } 
       req.user = payload;
     } catch (err) {
       res.status(401).send("invalid token");
@@ -22,5 +25,6 @@ const guard = (req, res, next) => {
   
   next();
 };
+}
 
 export default guard;
