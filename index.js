@@ -2,7 +2,7 @@ import express from 'express';
 import guard from './middleware/guard.js';
 import { logger} from './middleware/index.js';
 
-import { articalRouter,favoriteRouter,magazineRouter,userRouter } 
+import { adminRouter, articalRouter,favoriteRouter,magazineRouter,userRouter } 
 from './router/index.js';
 
 const PORT = 3007;
@@ -13,7 +13,8 @@ app.use(logger);
 app.use('/article',articalRouter);
 app.use('/magazine',magazineRouter);
 app.use('/user',userRouter);
-app.use('/favorite',guard,favoriteRouter);
+app.use('/admin', guard('admin'),adminRouter);
+app.use('/favorite',guard(),favoriteRouter);
 
 
 //console.log(app._router.stack)

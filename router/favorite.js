@@ -24,7 +24,7 @@ route.get('/:id', (req, res) => {
  * Retrieve a list of favorites
  */
 route.get('/', (req, res) => {
-  
+  console.log("favorit");
   res.send(favorites[res.user.username]);
 });
 
@@ -32,7 +32,7 @@ route.get('/', (req, res) => {
  * Create a new favorite
  */
 route.post('/', (req, res) => {
-  res.send('Create favorite');
+res.send('Create favorite');
 });
 
 /**
