@@ -35,6 +35,7 @@ const users = [
  * Login endpoint. Returns a JSON web token.
  */
 router.post('/login', (req, res) => {
+
   const username = req.body.username;
   const password = req.body.password;
 
@@ -42,8 +43,16 @@ router.post('/login', (req, res) => {
 
   if (!user || passwords[username] !== password) {
     res.status(400).send("Incorrect username / password !");
+    return;
   }
+
   // token part
+
+  const secret = "potato";
+
+  const token = Jwt.sign(user, secret, { expiresIn: 60 * 5 }); // 5 minutes
+
+  res.send(token);   //alog to show token
 });
 
 

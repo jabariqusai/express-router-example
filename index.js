@@ -10,6 +10,7 @@ import timeLogger from './middleware/time-logger/index.js';
 const PORT = 3001;
 
 const app = express();
+app.use(express.json());
 
 // app.use(timeLogger);
 app.use(endpointLogger);
