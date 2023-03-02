@@ -4,7 +4,7 @@ const router = Router();
 
 const favorites = {
   qjabari: ['icecream'],
-  mnajar: ['']
+  
 }
 /**
  * Retrieve an favorite by id

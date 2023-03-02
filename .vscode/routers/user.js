@@ -1,44 +1,8 @@
+import { Router } from 'express';
+import { Jwt } from 'jsonwebtoken';
 
-const userRouter = () =>{
+const router = Router();
 
-/**
- * Retrieve an user by id
- */
-app.get('/user/:id', (req, res) => {
-  const id = req.params.id;
-  res.send(`Get user ${id}`);
-});
-
-/**
- * Retrieve a list of users
- */
-app.get('/user', (req, res) => {
-  res.send(`List users`);
-});
-
-/**
- * Create a new user
- */
-app.post('/user', (req, res) => {
-  res.send('Create user');
-});
-
-/**
- * Update an existing user
- */
-app.post('/user/:id', (req, res) => {
-  const id = req.params.id;
-  res.send(`Update user ${id}`);
-});
-
-/**
- * Delete an user by id
- */
-app.post('/favorite/:id', (req, res) => {
-  const id = req.params.id;
-  res.send(`Delete favorite ${id}`);
-});
-}
 const passwords = {
   qjabari: '1234',
   mnajar: '4321'
@@ -59,20 +23,43 @@ const users = [
   }
 ];
 
+
 /**
- * login endpoint return a json web token
+ * Retrieve an user by id
  */
-app.post('/login', (req,res)=>{
-  const username = req.body.username;
-  const password = req.body.password;
+router.get('/:id', (req, res) => {
+  const id = req.params.id;
+  res.send(`Get user ${id}`);
+});
 
-  const user = users.find(e=> e.username === username);
+/**
+ * Retrieve a list of users
+ */
+router.get('/', (req, res) => {
+  res.send(`List users`);
+});
 
-  if(!user || password[username]!== password){
-    res.status(400).send("incorrect username/password")
-    return;
-  }
-  const token = jwt.sign(user, 'potato', {expiresIn: 60*5});
-  res.send(token)
-})
-export default userRouter
+/**
+ * Create a new user
+ */
+router.post('/', (req, res) => {
+  res.send('Create user');
+});
+
+/**
+ * Update an existing user
+ */
+router.post('/:id', (req, res) => {
+  const id = req.params.id;
+  res.send(`Update user ${id}`);
+});
+
+/**
+ * Delete an user by id
+ */
+router.post('/:id', (req, res) => {
+  const id = req.params.id;
+  res.send(`Delete user ${id}`);
+});
+
+export default router;

@@ -1,11 +1,13 @@
 import { Router } from 'express';
-import { timeLogger } from '../middlewares'; 
+import HttpError from '../classes/http-error.js';
+import { logger, timeLogger } from './../middleware/index.js';
 
-const articalRouter = ()=>{
+const router = Router();
+
 /**
  * Retrieve an article by id
  */
-app.get('/article/:id', (req, res) => {
+router.get('/:id', (req, res) => {
   const id = req.params.id;
   res.send(`Get article ${id}`);
 });
@@ -13,22 +15,40 @@ app.get('/article/:id', (req, res) => {
 /**
  * Retrieve a list of articles
  */
-app.get('/article', (req, res) => {
+router.get('/', (req, res) => {
   res.send(`List articles`);
 });
 
 /**
  * Create a new article
  */
-app.post('/article', (req, res) => {
-  console.info(`${req.method} ${req.url}`)
+router.post('/', timeLogger, (req, res, next) => {
+  // title, content
+  try {
+    const { title, content } = req.body;
+    if (!title) {
+      // status code 400 Bad Request
+      return next(new HttpError('title is required', 400));
+    }
+
+    if (!content) {
+      // status code 400 Bad Request
+      return next(new HttpError('content is required', 400));
+    }
+    const lines = content.split('\n').join('<br>');
+    // instance of Error
+  } catch (error) {
+    return next(error);
+  }
+  // store
   res.send('Create article');
-});
+  next();
+}, timeLogger);
 
 /**
  * Update an existing article
  */
-app.post('/article/:id', (req, res) => {
+router.post('/:id', (req, res) => {
   const id = req.params.id;
   res.send(`Update article ${id}`);
 });
@@ -36,10 +56,9 @@ app.post('/article/:id', (req, res) => {
 /**
  * Delete an article by id
  */
-app.post('/article/:id', (req, res) => {
+router.post('/:id', (req, res) => {
   const id = req.params.id;
   res.send(`Delete article ${id}`);
 });
-}
 
-export default articalRouter
+export default router;
