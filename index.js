@@ -1,13 +1,17 @@
 import express from 'express';
-import articleRouter from './router/article.js';
-import magazineRouter from './router/magazine.js';
-import favoritsRouter from './router/favorits.js';
-import userRouter from './router/user.js';
-const PORT = 3001;
+import guard from './middileware/guard.js';
+import logger from './middileware/logger/logger.js';
+import { articleRouter, magazineRouter, userRouter, favoriteRouter } from './routes/index.js';
 
+const PORT = 3001;
 const app = express();
-app.use(articleRouter);
-app.use(magazineRouter);
-app.use(favoritsRouter);
-app.use(userRouter);
+app.use(express.json());
+app.use(logger);
+
+app.use('/article', articleRouter);
+app.use('/magazine', magazineRouter);
+app.use('/user', userRouter);
+
+app.use('/favorite',guard, favoriteRouter);
+
 app.listen(PORT, () => console.debug('Server is listening on port', PORT));
