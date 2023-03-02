@@ -4,4 +4,7 @@
     "editor.tabSize": 4,
     "javascript.preferences.quoteStyle": "single",
     "javascript.format.semicolons": "insert",
+    "cSpell.words": [
+        "Moayed"
+    ],
   }
