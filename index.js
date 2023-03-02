@@ -10,8 +10,7 @@ app.use(logger);
 app.use('/article', articleRouter);
 app.use('/magazine', magazineRouter);
 app.use('/user', userRouter);
-app.use('/favorite', authorization);
-app.use('/favorite', favoriteRouter);
+app.use('/favorite', authorization , favoriteRouter);
 app.use(errorHandeling);
 
 // console.log (app._router.stack) to print system stack 

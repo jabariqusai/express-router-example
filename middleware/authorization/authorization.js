@@ -9,7 +9,7 @@ const authorization = (req, res, next) => {
   const token = req.headers.authorization ; // to get the token from request headers 
   if (!token) {
     console.log(token);
-    res.status(400).send('token must be sent in request header');
+    res.status(401).send('token must be sent in request header'); // HTTP 401 status code -> unuathenticated
     return;
   }
   try { // we use try , catch  -> because of the verify function which throws an error if the token does not match 
@@ -19,7 +19,7 @@ const authorization = (req, res, next) => {
     next();
   } catch (error) {
     console.error(error)
-    res.status(400).send('invalid token !');
+    res.status(401).send('invalid token !'); // HTTP 401 status code -> unuathenticated
   }
 };
 
