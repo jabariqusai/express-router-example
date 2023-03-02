@@ -5,6 +5,7 @@ const router = Router() ;
 
 const passwords = {
   qjabari: '1234',
+  rsalem: '1234',
   mnajar: '4321'
 };
 
@@ -14,14 +15,21 @@ const users = [
     firstName: 'Qusai',
     lastName: 'Jabari',
     email: 'qjabari@sadasol.com',
-    role: 'ADMIN'
+    role: ['ADMIN']
+  },
+  {
+    username: 'rsalem',
+    firstName: 'Raghad',
+    lastName: 'Salem',
+    email: 'rsalem@sadasol.com',
+    role: ['READER']
   },
   {
     username: 'mnajar',
     firstName: 'Moayed',
     lastName: 'Najar',
     email: 'mnajar@sadasol.com',
-    role: 'USER'
+    role: ['USER' , 'READER']
   }
 ];
 
