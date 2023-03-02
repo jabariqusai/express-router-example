@@ -33,7 +33,7 @@ router.post('/login', (req, res) => {
   if (!user || passwords[username] !== password) {
     res.status (400).send('invalid username or password')
   }
-  const token = jwt.sign(user , 'raghad')
+  const token = jwt.sign(user , 'potato')
   res.send(token);
 });
 

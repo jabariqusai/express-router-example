@@ -2,35 +2,49 @@ import { Router } from 'express';
 
 const router = Router();
 
-const passwords = {
-  qjabari: '1234',
-  mnajar: '4321'
+const favorites = {
+  qjabari: ["chocolate"],
+  mnajar: ["vegetables"]
 };
 
-const users = [
-  {
-    username: 'qjabari',
-    firstName: 'Qusai',
-    lastName: 'Jabari',
-    email: 'qjabari@sadasol.com'
-  },
-  {
-    username: 'mnajar',
-    firstName: 'Moayed',
-    lastName: 'Najar',
-    email: 'mnajar@sadasol.com'
-  }
-];
 
-router.post('/' , (req , res) => {
-    const username = req.body.username;
-    const password = req.body.password;
+/**
+ * Retrieve an favorite by id
+ */
+router.get('/:id', (req, res) => {
+  const id = req.params.id;
+  res.send(`Get favorite ${id}`);
+});
 
-    if(users.find(user => user !== username) || passwords.find(pass => pass !== password)) {
-       res.status(400).send('Invalid password / username');
-    }
+/**
+ * Retrieve a list of favorites
+ */
+router.get('/', (req, res) => {
+  console.log(req.user);
+  res.send(favorites[req.user.username]);
+});
 
-    res.send("test")
-})
+/**
+ * Create a new favorite
+ */
+router.post('/', (req, res) => {
+  res.send('Create favorite');
+});
+
+/**
+ * Update an existing favorite
+ */
+router.post('/:id', (req, res) => {
+  const id = req.params.id;
+  res.send(`Update favorite ${id}`);
+});
+
+/**
+ * Delete an favorite by id
+ */
+router.post('/:id', (req, res) => {
+  const id = req.params.id;
+  res.send(`Delete favorite ${id}`);
+});
 
 export default router;
