@@ -5,7 +5,9 @@ import userRouter from './routes/user.js';
 import favoriteRouter from './routes/favorite.js';
 import endpointLogger from './middleware/logger/index.js';
 import timeLogger from './middleware/time-logger/index.js';
-import guard from './middleware/guard/guard.js'
+import guard from './middleware/guard/guard.js';
+import adminRouter from './routes/admin.js';
+
 
 const PORT = 3001;
 
@@ -18,7 +20,8 @@ app.use(endpointLogger);
 app.use('/article', articleRouter);
 app.use('/magazine', magazineRouter);
 app.use('/user', userRouter);
-app.use('/favorite',guard, favoriteRouter);
+app.use('/favorite',guard(), favoriteRouter);
+app.use('/admin',guard("admin"), adminRouter); // only admin should enter this point
 
 // app.use(timeLogger);
 

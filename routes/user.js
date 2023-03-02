@@ -15,19 +15,22 @@ const users = [
     username: 'qjabari',
     firstName: 'Qusai',
     lastName: 'Jabari',
-    email: 'qjabari@sadasol.com'
+    email: 'qjabari@sadasol.com',
+    role: 'user'
   },
   {
     username: 'mnajar',
     firstName: 'Moayed',
     lastName: 'Najar',
-    email: 'mnajar@sadasol.com'
+    email: 'mnajar@sadasol.com',
+    role: 'user'
   },
   {
     username: 'lanaQ',
     firstName: 'Lana',
     lastName: 'Qawasmy',
-    email: 'lana@sadasol.com'
+    email: 'lana@sadasol.com',
+    role: 'admin'
   }
 ];
 
